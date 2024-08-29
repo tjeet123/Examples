@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!--Dont run test parrallely as it can be done at performance level and not at functional level -->
+<!--In Grid u can excute test in parallel-->
+<!--Once can execute classes parallely-->
+<suite name="Loan Department" parallel="tests" thread-count="2">
+  <test name="Personal Loan">
+	  <parameter name="URL" value="personalloan.com"/>
+    <classes>
+      <class name="practise.day1"/>
+      <class name="practise.day2"/>
+      <class name="practise.day3"/>
+
+    </classes>
+  </test> <!-- Test -->
+  
+  <test name="Car Loan" parallel="classes" thread-count="2">
+	  <parameter name="URL" value="carloan.com"/>
+	  <parameter name="Username" value="testusername"/>
+	  <classes>
+		  <class name="practise.day4">
+			  <methods>
+				  <exclude name="mobileLoginCarLoan"/>
+			  </methods>
+		  </class>
+	  </classes>
+	  
+  </test>
+</suite> <!-- Suite -->
